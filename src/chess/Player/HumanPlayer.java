@@ -21,10 +21,11 @@ public class HumanPlayer extends Player {
         super(isWhite);
     }
 
+    // kayna hna gha 7it kayna fl base class amma definition kayna f ComputerPlayer
     public void calculateNextMove() {}
 
     public void forwardBoardInput(Square square) {
-        //kola mra kantclickiw 3la piece tathighlighta
+        // kola mra kanclickiw 3la piece tathighlighta
         // y3ni ila bghina nclickiw ela chi whda khra khasna ntfiw,lhighlight l9dim
 
         //hadi katcleari lhighlights likano f lboardcontroller
@@ -50,20 +51,24 @@ public class HumanPlayer extends Player {
 
                 LinkedList<Move> moves = new LinkedList<>();
                 //kayhd square squareMap ou ta3tih lmove
-                Move move = squareMap.remove(square);
+                Move move = squareMap.remove(square); // this gives you the move(s) that will take you to said square (it can be either one move or 2)
+                                                      // the only case where it can be 2 is if it's a pawn that's about to be promoted
+                                                      // thus the conditions below
                 //ila kan mazal bimkan lpiece 3ndha moves li tdir
-                while (move != null) {
+                while (move != null) { // this allows us to see if there's a second move and add it as well
                     moves.add(move);
                     move = squareMap.remove(square);
                 }
                 highlightedPiece = null;
                 squareMap = null;
-                if (moves.size() == 1) {
+
+                if (moves.size() == 1) { // if there's only one move we execute it
                     //ta excuter lmove li whadid li kayn
                     returnMove(moves.get(0));
-                } else if (moves.size() > 1) {
+                } else if (moves.size() > 1) { // but if there are 2 moves we execute the promotion instead
                     //lcas dpromotion
                     Move move1 = PromotionConfirmationWindow.display("Promotion", "Which piece you would like to replace the pawn with?", moves);
+                    // kat executi lmove
                     returnMove(move1);
 
                 } else {

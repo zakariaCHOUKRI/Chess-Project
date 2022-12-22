@@ -3,7 +3,6 @@ package src.controller;
 import javafx.application.Platform;
 import src.chess.Board.ActiveBoard;
 import src.chess.Board.Board;
-import src.chess.Board.Status;
 import src.chess.Player.Player;
 import src.chess.move.Move;
 import src.chess.piece.Piece;
@@ -32,7 +31,6 @@ public class BoardController {
     private ActiveBoard activeBoard;
     private ActiveBoardView activeBoardView;
 
-    private Status status;
     private boolean isWhiteTurn;
 
     private Player black;
@@ -41,7 +39,7 @@ public class BoardController {
     public boolean isDown = false;
 
     /**
-     * Constructor  kaycreer board controller bles informations d lboard li kaynin whad lfile
+     * Constructor  kaycreer board controller bles informations d lboard li kaynin fhad lfile
      * @param filePath lfile li ghayakhd mno les informations
      * @param white white player
      * @param black black player
@@ -130,7 +128,7 @@ public class BoardController {
 
         Scene scene = new Scene(activeBoardView.getBoardGUI(this));
         Stage window = PlayView.getPlayView(TITLE, scene);
-        //fach  nbghiw nclosiz lgame ghayprinta window closed
+        //fach nbghiw nclosiw lgame ghayprinta window closed
         window.setOnCloseRequest(e -> {
             System.out.println("WINDOW CLOSED!!");
             isDown = true;
@@ -162,7 +160,6 @@ public class BoardController {
             //ila checkMate
             if(activeBoard.checkForCheckMate(!isWhiteTurn)) {
                 System.out.printf("%s has won the game! and the game will exit in 5 seconds :D%n", isWhiteTurn ? "White" : "Black");
-                status = Status.FREEZE;
                 new java.util.Timer().schedule(
                         new java.util.TimerTask() {
                             @Override
@@ -178,7 +175,6 @@ public class BoardController {
         } else {
             if(activeBoard.checkForStaleMate(!isWhiteTurn)) {
                 System.out.printf("Stalemate and the game will exit in 5 seconds :D%n");
-                status = Status.FREEZE;
                 new java.util.Timer().schedule(
                         new java.util.TimerTask() {
                             @Override

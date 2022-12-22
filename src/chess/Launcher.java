@@ -30,9 +30,9 @@ public class Launcher extends Application {
         this.launcherWindow = launcherWindow;
 
         Label white = new Label("White Player");
-        white.setTextFill(Color.web("#ffffff"));
+        white.setTextFill(Color.web("#000000"));
         Label black = new Label("Black Player");
-        black.setTextFill(Color.web("#ffffff"));
+        black.setTextFill(Color.web("#000000"));
 
         HBox titles = new HBox(10);
         titles.getChildren().addAll(white, black);
@@ -52,7 +52,7 @@ public class Launcher extends Application {
         playerSelectors.setAlignment(Pos.CENTER);
 
         Label theme = new Label("Theme");
-        theme.setTextFill(Color.web("#ffffff"));
+        theme.setTextFill(Color.web("#000000"));
         HBox themeTitle = new HBox(10);
         themeTitle.getChildren().addAll(theme);
         themeTitle.setAlignment(Pos.CENTER);
@@ -65,7 +65,7 @@ public class Launcher extends Application {
         themeSelectors.setAlignment(Pos.CENTER);
 
 
-        Button button = new Button("PLAY");
+        Button button = new Button("START THE GAME");
         button.setOnAction(e -> {
             b = new BoardController(filePath.getAbsolutePath() + "/Boards/DefaultBoard.txt", whitePlayer, blackPlayer);
             launcherWindow.close();
@@ -78,15 +78,17 @@ public class Launcher extends Application {
         VBox layout = new VBox(10);
         layout.getChildren().addAll(titles, playerSelectors, themeTitle, themeSelectors, button);
         layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(280));
+        layout.setPadding(new Insets(10));
 
-        BackgroundImage myBI= new BackgroundImage(new Image(Launcher.filePath.getAbsolutePath() + "\\ChessPieceImages" + "\\bg.jpg",layout.getWidth(),layout.getHeight(),false,true),
+        // do not use bg1, bg6, bg8, 10 is the best candidate
+        BackgroundImage myBI= new BackgroundImage(new Image(Launcher.filePath.getAbsolutePath() + "\\ChessPieceImages" + "\\bg10.jpg", 564, 564,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         layout.setBackground(new Background(myBI));
 
-        Scene scene = new Scene(layout);
+        Scene scene = new Scene(layout, 564, 564);
 
         launcherWindow.setScene(scene);
+        launcherWindow.setResizable(false);
         launcherWindow.setTitle("Chess Game LBD III");
         launcherWindow.show();
 

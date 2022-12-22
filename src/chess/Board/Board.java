@@ -1,4 +1,3 @@
-
 package src.chess.Board;
 
 import src.chess.move.Move;

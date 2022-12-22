@@ -96,7 +96,7 @@ public class Move implements Comparable<Move> {
 
     /**
      * katrj3 String form d lmove katkoun fih lId dlpiece li thrkat ou starting square ou ila kant chi
-     * capturedSquare ou lsquare li mat lih
+     * capturedSquare ou lsquare li mchat lih
      *
      * @return A String representation  dlmove
      */
