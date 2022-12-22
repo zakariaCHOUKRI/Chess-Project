@@ -178,7 +178,7 @@ public class Board implements ActiveBoard {
     }
 
     /**
-     * method katchecki wash makaynch chi pawn fl column li 3tinaha
+     * method katchecki wash makaynch chi pawn fl column li 3tinaha (used for AI)
      *
      * @param col lcolumn li bghina ncheckiw
      * @return {@code true} ila makaynsh pawn, {@code false} ila kayn
@@ -197,7 +197,7 @@ public class Board implements ActiveBoard {
     }
 
     /**
-     * calculate score in this board
+     * calculate score in this board (used for AI)
      * @return total score in board
      */
     public int score() {

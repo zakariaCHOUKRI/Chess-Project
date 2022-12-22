@@ -81,7 +81,8 @@ public class King extends Piece implements FirstMoveMatters {
         LinkedList<Move> moves = new LinkedList<>();
 
         // ila kant hasMoved true kaymshi nichan l return wi returni moves khawya
-        // nafs l7aja la kant lblassa li ghanmshiw liha flcastling ghat7tto en danger
+        // nafs l7aja la kan lking aslan in danger
+        // is safeMove(chiSquare) katchof wash ta shi enemy piece ma3ndha chi move kay endi f chiSquare
         if(!hasMoved && activeBoard.isSafeMove(this.square, isWhite)) {
 
             Piece leftPiece = activeBoard.getPiece(new Square(square.getRow(), 0));
